@@ -40,7 +40,7 @@ trait LongPollingSupport { this: TelegramBot =>
     m2: BotMarshaller[BotApiRequest[Seq[Update]]],
     um2: BotUnmarshaller[BotApiResponse[Seq[Update]]]
   ): Unit = {
-    client.request(SetWebhook()).foreach { _ =>
+    client.request(SetWebhook("")).foreach { _ =>
       apiUpdateSource.runForeach(receiveUpdate)
     }
   }
